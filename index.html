@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=1024, initial-scale=1.0" />
+    <title>Jiggy</title>
+
+    <style>
+      html,
+      body {
+        background: black;
+      }
+    </style>
+
+    <!-- jiggy uses Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <script type="module">
+      import { define, html, dispatch } from 'hybrids'
+
+      export const MyComponent = define({
+        tag: 'my-component',
+        str: 'message',
+        num: {
+          value: 42,
+          observe: (host, val) => {
+            dispatch(host, 'double', {
+              detail: { value: val * 2, formatted: `${host.str}: ${val * 2}` },
+              bubbles: true,
+              composed: true,
+            })
+          },
+        },
+        bool: false,
+        obj: { get: (host, val = {}) => val, set: (host, val) => val },
+        arr: { get: (host, val = []) => val, set: (host, val) => val },
+        render: ({ str, num, bool, obj, arr }) =>
+          html`<pre>${JSON.stringify({ str, num, bool, obj, arr }, null, 2)}</pre>`,
+      })
+    </script>
+
+    <!-- Gettin' jiggy wit it -->
+    <script type="module" src="./dist/jiggy.js"></script>
+  </head>
+  <body>
+    <!-- na-na, na, na-na-na -->
+    <jig-block props="str, num, bool, obj, arr" events="double">
+      <my-component></my-component>
+      <jig-log slot="log"></jig-log>
+    </jig-block>
+  </body>
+</html>

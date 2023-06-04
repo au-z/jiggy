@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+}
+:host {
+  width: max-content;
+  position: relative;
+  display: grid;
+  grid-template-rows: 2rem auto;
+  grid-template-areas: 'h h' 'b s';
+  grid-gap: 1rem;
+  margin: var(--jig-block-margin, 1rem);
+  background: var(--jig-block-background, #333);
+  padding: var(--jig-block-padding, 0.5rem);
+  border-radius: var(--jig-border-radius, 0.5rem);
+  color: var(--jig-block-color, #e7e7e7);
+  & > * {
+    display: inline-block;
+  }
+}
+.header {
+  grid-area: h;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header a pre {
+  margin: 0;
+}
+.header a cam-icon {
+  --color: #88aaff;
+  transition: 0.3s color ease;
+}
+.block {
+  grid-area: b;
+  display: inline-block;
+  height: fit-content;
+}
+.slots {
+  grid-area: s;
+  overflow: hidden;
+}
+.header cam-button.light {
+  --color: #8fb9d9;
+}
+.header cam-button.dark {
+  --color: #e9b999;
+}
+.content {
+  background: var(--jig-background, #272727);
+  padding: var(--jig-padding, 1rem);
+  border-radius: var(--jig-border-radius, 0.25rem);
+  border: var(--jig-border, 1px solid #444);
+}
+.props {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto;
+  grid-column-gap: 0rem;
+  grid-row-gap: 0.25rem;
+  justify-items: flex-start;
+  align-items: center;
+}
+.props:has(.prop) {
+  margin-top: 0.5rem;
+}
+.props > .prop {
+  display: contents;
+  cam-button[type='tech'] {
+    --color: #e98f73;
+  }
+}
+.props label {
+  margin-right: 1rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--jig-prop-label-background, rgba(255, 255, 255, 0.2));
+  border-top-left-radius: var(--jig-prop-border-radius, 0.25rem);
+  border-bottom-left-radius: var(--jig-prop-border-radius, 0.25rem);
+}
+.props input,
+.props textarea {
+  background: var(--jig-prop-background, transparent);
+  border: var(--jig-prop-border, 1px solid #666);
+  color: var(--jig-prop-color, #e7e7e7);
+  padding: var(--jig-prop-padding, 0.3rem);
+  border-top-right-radius: var(--jig-prop-border-radius, 0.25rem);
+  border-bottom-right-radius: var(--jig-prop-border-radius, 0.25rem);
+  font-family: monospace;
+}
+.props input:not([type='checkbox']),
+.props textarea {
+  width: 100%;
+}
+.props input[type='checkbox'] {
+  height: 1.3rem;
+}
+
+/* themes */
+:host([theme='light']) {
+  --jig-block-background: #e7e8ea;
+  --jig-block-color: #38393f;
+  --jig-background: white;
+  --jig-color: #38393f;
+  --jig-border: 1px solid #c8c9da;
+  --jig-prop-background: white;
+  --jig-prop-color: #38393f;
+  --jig-prop-label-background: #d8dadd;
+  --jig-prop-border: 1px solid #c8c9da;
+}

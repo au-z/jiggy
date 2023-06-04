@@ -1,0 +1,48 @@
+{
+  "name": "jiggy",
+  "version": "0.0.1",
+  "description": "A testing jig for web components.",
+  "type": "module",
+  "main": "dist/jig.js",
+  "module": "dist/jig.js",
+  "types": "dist/types/jig.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "prepublishOnly": "pnpm build",
+    "build": "tsc && vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/au-z/jiggy.git"
+  },
+  "keywords": [
+    "web",
+    "component",
+    "test",
+    "demo",
+    "storybook"
+  ],
+  "author": "Austin Martin (auz.martin@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/au-z/jiggy/issues"
+  },
+  "homepage": "https://github.com/au-z/jiggy#readme",
+  "dependencies": {
+    "@auzmartist/cam-el": "3.0.0-alpha.4",
+    "@auzmartist/hybrids-helpers": "0.3.6",
+    "hybrids": "^8.2.0",
+    "immer": "^10.0.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.3",
+    "vite": "^4.3.9",
+    "autoprefixer": "^10.4.12",
+    "postcss": "^8.4.5",
+    "postcss-mixins": "^9.0.1",
+    "postcss-nested": "^5.0.6"
+  }
+}
